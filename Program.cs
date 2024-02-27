@@ -46,9 +46,29 @@ while (count!=-1)
             }
             game.PrintList(count);
             continue;
+        case ConsoleKey.Escape:
+            var gameCat = new ThreeOfAKind();
+            game.rollsLeft = 3;
+            game.PrintList(0);
+            Console.WriteLine("\n You have acquired {0} points.", gameCat.PointsAcquired(game.dice));
+            game.ResetSelectedDice();
+            game.RandomizeDice();
+            break;
+
         case ConsoleKey.Enter:
             game.RandomizeSelectedDice();
-            game.PrintList(0);
+            if (game.rollsLeft==1)
+            {
+                var gameCategory = new ThreeOfAKind();
+                game.rollsLeft = 3;
+                game.PrintList(0);
+                Console.WriteLine("\n You have acquired {0} points.", gameCategory.PointsAcquired(game.dice));
+                game.RandomizeDice();
+            } else
+            {
+                game.rollsLeft--;
+                game.PrintList(0);
+            }
             game.ResetSelectedDice();
             break;
 

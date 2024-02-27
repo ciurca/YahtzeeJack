@@ -11,6 +11,7 @@ namespace YahtzeeJack
     {
         public List<int> dice { get; set;}
         public List<int> selectedDice { get; set; }
+        public int rollsLeft { get; set; }
         public List<int> indexOfSelectedDice { get
             {
                 List<int> indexes = new List<int>(); 
@@ -29,6 +30,7 @@ namespace YahtzeeJack
             int[] inputSelectedDice = { 0,0,0,0,0 };
             dice = new List<int>(input);
             selectedDice = new List<int>(inputSelectedDice);
+            rollsLeft = 3;
         }
         public void ResetSelectedDice()
         {
@@ -69,6 +71,15 @@ namespace YahtzeeJack
         public void PrintList(int cursor)
         {
             Console.Clear();
+            Console.WriteLine("=============================================================");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"NOW PLAYING: {ThreeOfAKind.Name}");
+            Console.ResetColor();
+            Console.WriteLine($"{ThreeOfAKind.Description}");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Rolls left: {rollsLeft}");
+            Console.ResetColor();
+            Console.WriteLine("=============================================================");
             Console.Write("\n");
             for (int i = 0; i<5; i++)
             {
